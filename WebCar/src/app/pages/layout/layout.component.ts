@@ -11,7 +11,6 @@ import { Router, RouterOutlet } from '@angular/router';
 export class LayoutComponent {
 
   constructor(private router: Router) {
-
   }
 
   logoff() {

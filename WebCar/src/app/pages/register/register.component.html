@@ -1,34 +1,34 @@
 
-<div class="parent">
-  <div class="container">
-      <div class="login-box">
-          <h2>Register Account</h2>
-          <form action="#">
-              <div class="input-box">
-                  <input type="text" [(ngModel)]="registerObj.firstName" name="firstName" required>
-                  <label>firstName</label>
-              </div>
-              <div class="input-box">
-                  <input type="text" [(ngModel)]="registerObj.lastName" name="lastName" required>
-                  <label>lastName</label>
-              </div>
-              <div class="input-box">
-                  <input type="text" [(ngModel)]="registerObj.userName" name="userName" required>
-                  <label>userName</label>
-              </div>
-              <div class="input-box">
-                  <input type="email" [(ngModel)]="registerObj.email" name="email" required>
-                  <label>email</label>
-              </div>
-              <div class="input-box">
-                  <input type="password" [(ngModel)]="registerObj.password" name="password" required>
-                  <label>Password</label>
-              </div>
+  <div class="parent">
+    <div class="container">
+        <div class="login-box">
+            <h2>Register Account</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="registerObj.firstName" name="firstName" required>
+                    <label>firstName</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="registerObj.lastName" name="lastName" required>
+                    <label>lastName</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="registerObj.userName" name="userName" required>
+                    <label>userName</label>
+                </div>
+                <div class="input-box">
+                    <input type="email" [(ngModel)]="registerObj.email" name="email" required>
+                    <label>email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" [(ngModel)]="registerObj.password" name="password" required>
+                    <label>Password</label>
+                </div>
 
-              <button type="button" class="btn" (click)="onRegister()" >Register</button>
+                <button type="button" class="btn" (click)="onRegister()" >Register</button>
 
-          </form>
-      </div>
+            </form>
+        </div>
 
+    </div>
   </div>
-</div>

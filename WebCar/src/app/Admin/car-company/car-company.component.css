@@ -1,0 +1,26 @@
+.car-company-list {
+  text-align: center;
+}
+
+.car-company-list h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.car-company-item {
+  text-align: left;
+}
+
+.car-company-item td {
+  padding: 10px;
+}
+
+.car-company-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.car-company-name {
+  font-size: 16px;
+  font-weight: bold;
+}

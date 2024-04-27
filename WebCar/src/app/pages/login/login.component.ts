@@ -23,12 +23,12 @@ export class LoginComponent {
     this.http.post('http://localhost:5119/api/Auth/login', this.loginObj).subscribe((res:any)=>{
       if(res.isSucceed){
         alert(res.message)
-        this.router.navigateByUrl('/dashboard')
+        this.router.navigateByUrl('/admin')
         localStorage.setItem('token',res.responseData)
       }else {
         alert(res.message)
       }
-      
+
     })
   }
 }
