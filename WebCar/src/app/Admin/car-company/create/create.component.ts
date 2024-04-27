@@ -19,7 +19,7 @@ export class CreateComponent {
 
   }
   oncreate() {
-    this.http.post('https://localhost:7070/api/CarCompany/create-CarCompany', this.createObj).subscribe((res:any)=>{
+    this.http.post('https://localhost:5119/api/CarCompany/create-CarCompany', this.createObj).subscribe((res:any)=>{
       if(res.isSucceed){
         alert(res.message)
         // this.router.navigateByUrl('/admin/car-company')

@@ -3,13 +3,11 @@ import { HttpInterceptorFn } from '@angular/common/http';
 export const demoInterceptor: HttpInterceptorFn = (req, next) => {
   debugger;
   if (typeof window !== 'undefined') {
-      debugger;
     // Perform localStorage action
     const authToken = localStorage.getItem("token");
-    debugger;
     const authReq = req.clone({
       setHeaders: {
-        'Authorization': `Bearer + ${authToken}`
+        Authorization: `Bearer ${authToken}`
       }
     });
 
