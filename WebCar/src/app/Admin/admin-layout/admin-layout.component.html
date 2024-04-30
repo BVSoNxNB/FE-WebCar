@@ -39,13 +39,13 @@
               </a>
             </li>
             <li>
-              <a href="/admin/car-company" class="active">
+              <a [routerLink]="['/admin/car-company']" routerLinkActive="active">
                 <span class="las la-building"></span>
                 <small>CarCompany</small>
               </a>
             </li>
             <li>
-              <a href="">
+              <a [routerLink]="['/admin/car']" routerLinkActive="active">
                 <span class="las la-car"></span>
                 <small>Car</small>
               </a>
@@ -78,13 +78,17 @@
                 class="bg-img"
                 style="background-image: url()"
               ></div>
-              <span class="las la-power-off"></span>
-              <span>Logout</span>
+              <button class="logout-button" (click)="onLogout()">
+                <span class="las la-power-off"></span>
+                <span>Logout</span>
+              </button>
             </div>
           </div>
         </div>
       </header>
-      <main></main>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
     </div>
   </body>
 </html>

@@ -1,0 +1,54 @@
+.car-list {
+  text-align: center;
+}
+
+.car-list h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.car-item {
+  text-align: left;
+}
+
+.car-item td {
+  padding: 10px;
+}
+
+.image-container {
+  width: 100px;
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+}
+
+.car-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-delete {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #ff6666;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black; /* Màu chữ đen */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  color: black; /* Màu chữ đen khi rê chuột vào */
+}

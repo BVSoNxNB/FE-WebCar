@@ -1,1 +1,87 @@
-<p>car works!</p>
+<div class="car-list">
+  <h2>List of Cars</h2>
+
+  <!-- Button for creating a new car -->
+  <div class="row mb-3">
+    <div class="col text-right">
+      <button class="btn btn-success" type="button" (click)="onCreate()">Create New Car</button>
+    </div>
+  </div>
+
+  <!-- Display the list of cars if available -->
+  <div *ngIf="Cars.length > 0">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>STT</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Version</th>
+          <th>Year</th>
+          <th>Engine</th>
+          <th>Transmission</th>
+          <th>Type</th>
+          <th>Condition</th>
+          <th>Fuel</th>
+          <th>Size</th>
+          <th>Seats</th>
+          <th>Price</th>
+          <th>Brand</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through each car -->
+        <tr *ngFor="let car of Cars; let i = index" class="car-item">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <div id="carouselExampleIndicators{{ i }}" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div *ngFor="let image of car.hinh; let j = index" class="carousel-item" [class.active]="j === 0">
+                  <img [src]="image" class="d-block w-100" alt="{{ car.ten }} Image">
+                </div>
+              </div>
+              <!-- Kiểm tra số lượng ảnh và hiển thị nút điều hướng chỉ khi có nhiều hơn một ảnh -->
+              <ng-container *ngIf="car.hinh.length > 1">
+                <ol class="carousel-indicators">
+                  <li *ngFor="let image of car.hinh; let j = index" [attr.data-target]="'#carouselExampleIndicators' + i" [attr.data-slide-to]="j" [class.active]="j === 0"></li>
+                </ol>
+                <!-- Nút điều hướng trước -->
+                <a class="carousel-control-prev" [href]="'#carouselExampleIndicators' + i" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <!-- Nút điều hướng sau -->
+                <a class="carousel-control-next" [href]="'#carouselExampleIndicators' + i" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </ng-container>
+            </div>
+          </td>
+          <td>{{ car.ten }}</td>
+          <td>{{ car.phienBan }}</td>
+          <td>{{ car.namSanXuat }}</td>
+          <td>{{ car.dungTich }}</td>
+          <td>{{ car.hopSo }}</td>
+          <td>{{ car.kieuDang }}</td>
+          <td>{{ car.tinhTrang }}</td>
+          <td>{{ car.nhienLieu }}</td>
+          <td>{{ car.kichThuoc }}</td>
+          <td>{{ car.soGhe }}</td>
+          <td>{{ car.gia }}</td>
+          <td>{{ getCarCompanyName(car) }}</td>
+          <td>
+            <button class="btn btn-primary mr-2" [routerLink]="['/admin/car/update', car.id]">Update</button>
+            <button class="btn btn-danger" (click)="onDelete(car.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Display a message if no cars available -->
+  <div *ngIf="Cars.length === 0">
+    <p class="text-muted">No cars available.</p>
+  </div>
+</div>

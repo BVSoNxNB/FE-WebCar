@@ -1,7 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
-export const demoInterceptor: HttpInterceptorFn = (req, next) => {
-  debugger;
+export const customInterceptor: HttpInterceptorFn = (req, next) => {
   if (typeof window !== 'undefined') {
     // Perform localStorage action
     const authToken = localStorage.getItem("token");

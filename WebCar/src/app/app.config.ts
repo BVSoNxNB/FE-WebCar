@@ -3,12 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
   import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { demoInterceptor } from './Admin/car-company/demo.interceptor';
-import { provideClientHydration } from '@angular/platform-browser';
+import { customInterceptor } from './interceptor/custom.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptors([demoInterceptor])),
+    provideHttpClient(withInterceptors([customInterceptor])),
   ],
 };

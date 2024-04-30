@@ -28,11 +28,9 @@ export class LoginComponent {
       }else {
         alert(res.message)
       }
-
     })
   }
 }
-
 export class Login {
     UserName: string;
     Password: string;

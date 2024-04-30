@@ -1,0 +1,77 @@
+<div class="parent">
+  <div class="container">
+    <div class="update-car-box">
+      <h2>Update Car</h2>
+      <form>
+        <div class="name">
+          <input type="text" [(ngModel)]="carData.ten" name="ten" required>
+          <label>Name</label>
+        </div>
+        <div class="name">
+          <input type="text" [(ngModel)]="carData.phienBan" name="phienBan" required>
+          <label>Version</label>
+        </div>
+        <div class="name">
+          <input type="number" [(ngModel)]="carData.namSanXuat" name="namSanXuat" required>
+          <label>Year</label>
+        </div>
+        <div class="name">
+          <input type="number" [(ngModel)]="carData.dungTich" name="dungTich" required>
+          <label>Engine</label>
+        </div>
+        <div class="name">
+          <input type="text" [(ngModel)]="carData.hopSo" name="hopSo" required>
+          <label>Transmission</label>
+        </div>
+        <div class="name">
+          <input type="text" [(ngModel)]="carData.kieuDang" name="kieuDang" required>
+          <label>Type</label>
+        </div>
+        <div class="name">
+          <input type="text" [(ngModel)]="carData.tinhTrang" name="tinhTrang" required>
+          <label>Condition</label>
+        </div>
+        <div class="name">
+          <input type="text" [(ngModel)]="carData.nhienLieu" name="nhienLieu" required>
+          <label>Fuel</label>
+        </div>
+        <div class="name">
+          <input type="number" [(ngModel)]="carData.kichThuoc" name="kichThuoc" required>
+          <label>Size</label>
+        </div>
+        <div class="name">
+          <input type="number" [(ngModel)]="carData.soGhe" name="soGhe" required>
+          <label>Seats</label>
+        </div>
+        <div class="name">
+          <input type="number" [(ngModel)]="carData.gia" name="gia" required>
+          <label>Price</label>
+        </div>
+        <div class="name">
+          <select [(ngModel)]="carData.maHangXe" name="maHangXe" required>
+            <option *ngFor="let company of carCompanies" [value]="company.id">{{ company.name }}</option>
+          </select>
+          <label>Brand ID</label>
+        </div>
+        <div class="input-box">
+          <label for="logoInput" class="file-label">Upload New Logo</label>
+          <input type="file" id="logoInput" accept="image/*" class="file-input" (change)="onFileSelected($event)">
+          <span class="file-custom"></span>
+        </div>
+        <div class="preview-box" *ngIf="carImages.length > 0">
+          <h3>Current Image Previews</h3>
+          <div *ngFor="let image of carImages; let i = index">
+            <img [src]="image" alt="Image Preview">
+            <button type="button" class="btn-delete" (click)="deleteImage(i)">Delete</button>
+          </div>
+        </div>
+        <div class="button-group">
+          <!-- Style for the Submit button -->
+          <button type="button" class="btn" (click)="updateCar()">Update</button>
+          <!-- Style for the Back button -->
+          <button type="button" class="btn" (click)="back()">Back</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
