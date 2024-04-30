@@ -22,6 +22,7 @@ export class UpdateCarComponent implements OnInit {
   carId: number = 0;
   carData: any = {};
   carImages: string[] = [];
+  carCompanies: any[] = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
