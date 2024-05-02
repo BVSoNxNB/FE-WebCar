@@ -1,0 +1,68 @@
+/* Định dạng cơ bản cho form */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Định dạng cho tiêu đề */
+h1 {
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+}
+
+/* Định dạng cho nhãn và input */
+label, input, textarea {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+}
+
+/* Định dạng cho nút đặt hàng */
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Định dạng cho các ô input khi có lỗi */
+input.ng-invalid,
+textarea.ng-invalid {
+  border-color: #dc3545;
+}
+
+/* Định dạng cho thông báo lỗi */
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}

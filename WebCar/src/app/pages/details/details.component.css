@@ -1,0 +1,29 @@
+.container {
+  padding-top: 20px;
+}
+
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body p {
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}

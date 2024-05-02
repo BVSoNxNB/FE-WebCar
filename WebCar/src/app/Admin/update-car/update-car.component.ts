@@ -20,9 +20,10 @@ import { CarCompanyComponent } from '../car-company/car-company.component';
 
 export class UpdateCarComponent implements OnInit {
   carId: number = 0;
-  carData: any = {};
+  carData: any = {}; // Đảm bảo rằng carData đã được khởi tạo
   carImages: string[] = [];
   carCompanies: any[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -34,7 +35,20 @@ export class UpdateCarComponent implements OnInit {
       this.carId = params['id'];
       // Fetch car data by ID
       this.fetchCarData();
+      this.fetchCarCompanies();
     });
+  }
+
+  fetchCarCompanies() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    this.http
+      .get('http://localhost:5119/api/CarCompany/getAllCarCompany',{headers})
+      .subscribe((res: any) => {
+        this.carCompanies = res;
+      });
   }
 
   fetchCarData() {
@@ -44,6 +58,9 @@ export class UpdateCarComponent implements OnInit {
         (res: any) => {
           this.carData = res;
           this.carImages = res.hinh || []; // Assume images are stored in 'hinh' field
+
+          // Gán giá trị ban đầu của "Brand" vào carData.maHangXe
+          this.carData.maHangXe = res.maHangXe;
         },
         (error) => {
           console.error('Error fetching car data:', error);
@@ -66,6 +83,7 @@ export class UpdateCarComponent implements OnInit {
       reader.readAsDataURL(file);
     }
   }
+
   deleteImage(index: number) {
     this.carImages.splice(index, 1);
   }
@@ -78,7 +96,7 @@ export class UpdateCarComponent implements OnInit {
 
     this.http
       .put(
-        'http://localhost:5119/api/Car/updateCar/' + this.carId,
+        'http://localhost:5119/api/Car/updateCar /' + this.carId,
         { ...this.carData, hinh: this.carImages }, // Include images in the request body
         { headers }
       )
@@ -90,10 +108,29 @@ export class UpdateCarComponent implements OnInit {
       .subscribe(
         (res: any) => {
           alert('Cập nhật thành công');
-        },
-        (error) => {
-          console.error('Error updating car:', error);
         }
       );
   }
+
+  getCarCompanyName(carCompanyId: number): string {
+    const carCompany = this.carCompanies.find(company => company.id === carCompanyId);
+    return carCompany ? carCompany.name : '';
+  }
 }
+export class updateCar {
+  id: string = '';
+  ten: string = '';
+  hinh: string[] = [];
+  phienBan: string = '';
+  namSanXuat: number = 0;
+  dungTich: number = 0;
+  hopSo: string = '';
+  kieuDang: string = '';
+  tinhTrang: string = '';
+  nhienLieu: string = '';
+  kichThuoc: number = 0;
+  soGhe: number = 0;
+  gia: number = 0;
+  maHangXe: number = 0;
+}
+

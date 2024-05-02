@@ -1,1 +1,53 @@
-<p>users works!</p>
+<div class="user-list">
+  <h2>List of Users</h2>
+  <div class="row justify-content-end">
+    <div class="col-6 text-right">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="statusDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Role
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="statusDropdown">
+          <button class="dropdown-item" (click)="getUserByRole('USER')">User</button>
+          <button class="dropdown-item" (click)="getUserByRole('ADMIN')">Admin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="Users.length > 0">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of Users; let i = index" class="user-row">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.userName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <ng-container *ngIf="user.role =='USER'">
+              <button (click)="makeAdmin(user.userName)" class="btn btn-primary">Make Admin</button>
+            </ng-container>
+            <ng-container *ngIf="user.role =='ADMIN'">
+              <button (click)="makeUser(user.userName)" class="btn btn-primary">Make User</button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="Users.length === 0">
+    <p class="no-users">No users available.</p>
+  </div>
+</div>

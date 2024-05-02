@@ -1,0 +1,56 @@
+<div class="container">
+  <div *ngIf="car" class="row">
+    <!-- Car details column -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>{{ car.ten }}</h2>
+        </div>
+        <div class="card-body">
+          <!-- Carousel -->
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div *ngFor="let image of car.hinh; let i = index" class="carousel-item" [class.active]="i === 0">
+                <img [src]="image" class="d-block w-100" alt="Car Image">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Car details -->
+          <p><strong>Model:</strong> {{ car.phienBan }}</p>
+          <p><strong>Price:</strong> ${{ car.gia }}</p>
+          <p><strong>Year of Manufacture:</strong> {{ car.namSanXuat }}</p>
+          <p><strong>Engine Capacity:</strong> {{ car.dungTich }} cc</p>
+          <p><strong>Transmission:</strong> {{ car.hopSo }}</p>
+          <p><strong>Body Style:</strong> {{ car.kieuDang }}</p>
+          <p><strong>Status:</strong> {{ car.tinhTrang }}</p>
+          <p><strong>Fuel Type:</strong> {{ car.nhienLieu }}</p>
+          <p><strong>Dimensions:</strong> {{ car.kichThuoc }}</p>
+          <p><strong>Seating Capacity:</strong> {{ car.soGhe }}</p>
+          <p><strong>Brand: </strong> {{ getCarCompanyName(car) }}</p>
+          <!-- Button to show order form -->
+          <button class="btn btn-primary mt-3" (click)="showOrderForm()">Đặt hàng</button>
+        </div>
+      </div>
+    </div>
+    <!-- Order form column -->
+    <div class="col-md-6">
+      <div *ngIf="showForm" class="card mt-3">
+        <div class="card-header">
+          <h2>Đặt hàng</h2>
+        </div>
+        <div class="card-body">
+          <!-- Include the order form component here -->
+          <app-order [car]="car"></app-order>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
