@@ -24,37 +24,40 @@ export class OrderComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   submitOrder() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      // Handle the case where token is not available
-      return;
-    }
+    if (typeof window !== 'undefined') {
+      // Perform localStorage action
+      const token = localStorage.getItem("token");
+      if (!token) {
+        // Handle the case where token is not available
+        return;
+      }
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token,
-    });
-    // Decode the token to extract userId
-    const userId = this.getUserIdFromToken(token);
-    // Set the userId in the order object
-    this.order.userId = userId;
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      });
+      // Decode the token to extract userId
+      const userId = this.getUserIdFromToken(token);
+      // Set the userId in the order object
+      this.order.userId = userId;
 
-    // Update the order object to include the IDs of the cars
-    this.order.carId = this.car.id; // Assuming 'car' is the currently selected car
+      // Update the order object to include the IDs of the cars
+      this.order.carId = this.car.id; // Assuming 'car' is the currently selected car
 
-    // Send the order to the server
-    this.http
-      .post('http://localhost:5119/api/Order/Order', this.order, { headers })
-      .subscribe(
-        (res: any) => {
-          alert('Đặt hàng thành công');
-          this.router.navigateByUrl('');
-        },
-        (error) => {
-          alert('Đã xảy ra lỗi khi đặt hàng. Vui lòng nhập đầy đủ thông tin.');
-          console.error('Error submitting order:', error);
-        }
-      );
+      // Send the order to the server
+      this.http
+        .post('http://localhost:5119/api/Order/Order', this.order, { headers })
+        .subscribe(
+          (res: any) => {
+            alert('Đặt hàng thành công');
+            this.router.navigateByUrl('');
+          },
+          (error) => {
+            alert('Đã xảy ra lỗi khi đặt hàng. Vui lòng nhập đầy đủ thông tin.');
+            console.error('Error submitting order:', error);
+          }
+        );
+    };
   }
 
 

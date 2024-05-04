@@ -14,6 +14,8 @@ import { DetailsComponent } from './pages/details/details.component';
 import { OrderComponent } from './pages/order/order.component';
 import { OrdersComponent } from './Admin/orders/orders.component';
 import { UsersComponent } from './Admin/users/users.component';
+import { authGuard } from './auth.guard';
+import { CarByIdCompanyComponent } from './pages/car-by-id-company/car-by-id-company.component';
 export const routes: Routes = [
   {
     path: '',
@@ -37,12 +39,18 @@ export const routes: Routes = [
         component: HomeComponent,
       },
       {
+        path: 'cars/:id',
+        component: CarByIdCompanyComponent,
+      },
+      {
         path: 'details/:id',
         component: DetailsComponent,
+        // canActivate: [authGuard],
       },
       {
         path: 'order',
         component: OrderComponent,
+        canActivate: [authGuard],
       }
     ],
   },
@@ -53,38 +61,47 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'user',
         component: UsersComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'order',
         component: OrdersComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'car-company',
         component: CarCompanyComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'car-company/create',
         component: CreateCarCompanyComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'car-company/update/:id',
         component: UpdateCarCompanyComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'car',
         component: CarComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'car/create',
         component: CreateCarComponent,
+        canActivate: [authGuard],
       },
       {
         path: 'car/update/:id',
         component: UpdateCarComponent,
+        canActivate: [authGuard],
       },
     ],
   },

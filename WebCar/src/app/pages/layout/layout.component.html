@@ -9,7 +9,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Login App</a>
+      <a class="navbar-brand" href="#">Web Car</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,10 +19,10 @@
             <a class="nav-link" href="#">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <select class="form-control" (change)="onSelectCarCompany($event)">
+              <option value="" disabled selected>Select Car Company</option>
+              <option *ngFor="let carCompany of carCompanies" [value]="carCompany.id">{{ carCompany.name }}</option>
+            </select>
           </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">

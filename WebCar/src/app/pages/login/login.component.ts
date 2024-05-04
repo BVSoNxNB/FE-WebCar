@@ -20,16 +20,20 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.http.post('http://localhost:5119/api/Auth/login', this.loginObj).subscribe((res:any)=>{
-      if(res.isSucceed){
-        alert(res.message)
-        this.router.navigateByUrl('/admin')
-        localStorage.setItem('token',res.responseData)
-      }else {
-        alert(res.message)
+    this.http.post('http://localhost:5119/api/Auth/login', this.loginObj).subscribe((res: any) => {
+      if (res.isSucceed) {
+        alert(res.message);
+        this.router.navigateByUrl('/');
+        localStorage.setItem('token', res.responseData);
+      } else {
+        alert("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.");
       }
-    })
+    }, (error) => {
+      console.error('Error logging in:', error);
+      alert("Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.");
+    });
   }
+
 }
 export class Login {
     UserName: string;

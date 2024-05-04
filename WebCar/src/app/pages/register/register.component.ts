@@ -23,11 +23,12 @@ export class RegisterComponent {
     this.http.post('http://localhost:5119/api/Auth/register', this.registerObj).subscribe((res:any)=>{
       if(res.isSucceed){
         alert(res.message)
+        localStorage.removeItem('token');
         this.router.navigateByUrl('/login')
       }else {
         alert(res.message)
       }
-      
+
     })
   }
 }

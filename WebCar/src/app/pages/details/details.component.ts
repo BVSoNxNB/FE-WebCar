@@ -51,10 +51,24 @@ export class DetailsComponent implements OnInit {
     return carCompany ? carCompany.name : '';
   }
   showOrderForm() {
-    this.showForm = true;
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        const confirmation = window.confirm("Bạn cần đăng nhập trước khi đặt hàng. Bạn có muốn đăng nhập ngay bây giờ không?");
+        if (confirmation) {
+          this.router.navigateByUrl('/login');
+        }
+      } else {
+        // Show the order form
+        this.showForm = true;
+      }
+    }
   }
   handleOrderSubmitted(order: Order) {
     console.log('Order submitted:', order);
     // Xử lý dữ liệu đặt hàng tại đây
+  }
+  back() {
+    this.router.navigate(['/']);
   }
 }

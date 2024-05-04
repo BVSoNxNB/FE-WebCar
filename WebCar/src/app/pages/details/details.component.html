@@ -36,7 +36,14 @@
           <p><strong>Seating Capacity:</strong> {{ car.soGhe }}</p>
           <p><strong>Brand: </strong> {{ getCarCompanyName(car) }}</p>
           <!-- Button to show order form -->
-          <button class="btn btn-primary mt-3" (click)="showOrderForm()">Đặt hàng</button>
+          <div class="row">
+            <div class="col-md-6">
+              <button class="btn btn-primary mt-3" (click)="back()">Back</button>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-primary mt-3" (click)="showOrderForm()">Đặt hàng</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -47,7 +54,6 @@
           <h2>Đặt hàng</h2>
         </div>
         <div class="card-body">
-          <!-- Include the order form component here -->
           <app-order [car]="car"></app-order>
         </div>
       </div>

@@ -1,0 +1,26 @@
+/* CSS cho navbar */
+.navbar {
+  background-color: #343a40; /* Màu nền của navbar */
+}
+
+.navbar-brand {
+  color: #ffffff; /* Màu chữ của brand */
+  font-size: 1.5rem; /* Kích thước chữ của brand */
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #ffffff; /* Màu chữ của các liên kết */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ffffff; /* Màu chữ khi di chuột qua các liên kết */
+}
+
+.form-control {
+  width: 200px; /* Độ rộng của dropdown menu */
+}
+
+/* CSS cho các button */
+.btn {
+  margin: 0 5px; /* Khoảng cách giữa các button */
+}
