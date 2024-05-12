@@ -1,5 +1,6 @@
 .car-company-list {
   text-align: center;
+  margin: 0 auto; /* Căn giữa nội dung */
 }
 
 .car-company-list h2 {
@@ -37,4 +38,23 @@
 
 .btn-delete:hover {
   background-color: #ff6666; /* Darker red color on hover */
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: center; /* Căn giữa dữ liệu trong bảng */
+}
+
+.table th {
+  background-color: #333;
+  color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
 }

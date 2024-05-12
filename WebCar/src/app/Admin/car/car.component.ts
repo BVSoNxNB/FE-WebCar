@@ -38,7 +38,6 @@ export class CarComponent implements OnInit {
         this.Cars = res;
       });
   }
-
   fetchCarCompanies() {
     this.http
       .get('http://localhost:5119/api/CarCompany/getAllCarCompany')
@@ -52,19 +51,22 @@ export class CarComponent implements OnInit {
   }
 
   onDelete(carId: Number) {
-    this.http
-      .delete(`http://localhost:5119/api/Car/deleteCar/${carId}`)
-      .pipe(
-        finalize(() => {
-          this.fetchCars();
-        })
-      )
-      .subscribe(
-        (res: any) => {},
-        (error) => {
-          console.error('Failed to delete:', error);
-        }
-      );
+    const confirmation = window.confirm("Bạn chắc chắn muốn xoá xe này?");
+      if (confirmation) {
+        this.http
+        .delete(`http://localhost:5119/api/Car/deleteCar/${carId}`)
+        .pipe(
+          finalize(() => {
+            this.fetchCars();
+          })
+        )
+        .subscribe(
+          (res: any) => {},
+          (error) => {
+            console.error('Failed to delete:', error);
+          }
+        );
+      }
   }
 
   getFirstImage(car: any): string {

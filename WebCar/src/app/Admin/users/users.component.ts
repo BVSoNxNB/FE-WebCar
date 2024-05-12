@@ -26,7 +26,14 @@ export class UsersComponent implements OnInit {
   }
 
   allUser() {
-    this.http.get('http://localhost:5119/api/Auth/getAllUser')
+      if (typeof window !== 'undefined') {
+        // Perform localStorage action
+        const authToken = localStorage.getItem("token");
+        const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + authToken,
+      });
+      this.http.get('http://localhost:5119/api/Auth/getAllUser', {headers})
       .subscribe(
         (res: any) => {
           this.Users = res.responseData.map((user: any) => {
@@ -48,6 +55,7 @@ export class UsersComponent implements OnInit {
           console.error('Error fetching Users:', error);
         }
       );
+    }
   }
 
   getUserRole(userName: string) {

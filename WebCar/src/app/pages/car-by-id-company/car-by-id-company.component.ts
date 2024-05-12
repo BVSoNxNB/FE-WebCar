@@ -31,7 +31,6 @@ export class CarByIdCompanyComponent implements OnInit {
   }
 
   fetchCarsByCompanyId(companyId: string) {
-    debugger
     this.http.get(`http://localhost:5119/api/Car/getCarByIdCarCompany/${companyId}`).subscribe((res: any) => {
       this.cars = res;
     });

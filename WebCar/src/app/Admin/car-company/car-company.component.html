@@ -1,12 +1,12 @@
 
 <div class="car-company-list">
-  <h2>List of Car Companies</h2>
+  <h2>DANH SÁCH HÃNG XE</h2>
 
   <!-- Button for creating a new car company -->
   <div class="row mb-3">
     <div class="col text-right">
       <!-- Button for creating a new car company -->
-      <button class="btn btn-success" type="button" (click)="onCreate()">Create New Car Company</button>
+      <button class="btn btn-success" type="button" (click)="onCreate()">Tạo Hãng Xe</button>
     </div>
   </div>
   <!-- Display the list of car companies if available -->
@@ -15,9 +15,9 @@
       <thead class="thead-dark">
         <tr>
           <th>STT</th>
-          <th>Logo</th>
-          <th>Name</th>
-          <th>Action</th>
+          <th>Hình ảnh</th>
+          <th>Tên hãng</th>
+          <th>Hành động</th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +26,7 @@
           <td>{{ i + 1 }}</td>
           <td>
             <!-- Display company logo -->
-            <img [src]="company.logo" alt="{{ company.name }} Logo" class="car-company-logo img-fluid">
+            <img [src]="'http://192.168.56.1:9000/' + company.logo" alt="{{ companyData.name }} Logo" class="car-company-logo img-fluid">
           </td>
           <td>
             <!-- Display company name -->
@@ -34,9 +34,9 @@
           </td>
           <td>
             <!-- Button to navigate to update page -->
-            <button class="btn btn-primary mr-2" [routerLink]="['/admin/car-company/update', company.id]">Update</button>
+            <button class="btn btn-primary mr-2" [routerLink]="['/admin/car-company/update', company.id]">Cập nhật</button>
             <!-- Button to delete company -->
-            <button class="btn btn-danger" (click)="onDelete(company.id)">Delete</button>
+            <button class="btn btn-danger" (click)="onDelete(company.id)">Xoá</button>
           </td>
         </tr>
       </tbody>
@@ -45,6 +45,6 @@
 
   <!-- Display a message if no car companies available -->
   <div *ngIf="carCompanies.length === 0">
-    <p class="text-muted">No car companies available.</p>
+    <p class="text-muted">Bạn phá sản rồi hả. Mau thêm mới sản phẩm đi</p>
   </div>
 </div>

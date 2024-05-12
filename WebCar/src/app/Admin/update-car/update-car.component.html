@@ -1,75 +1,81 @@
 <div class="parent">
   <div class="container">
     <div class="update-car-box">
-      <h2>Update Car</h2>
+      <h2>Cập nhật thông tin xe</h2>
       <form>
         <div class="name">
           <input type="text" [(ngModel)]="carData.ten" name="ten" required>
-          <label>Name</label>
+          <label>Tên</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="carData.phienBan" name="phienBan" required>
-          <label>Version</label>
+          <label>Phiên bản</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="carData.namSanXuat" name="namSanXuat" required>
-          <label>Year</label>
+          <label>Năm sản xuất</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="carData.dungTich" name="dungTich" required>
-          <label>Engine</label>
+          <label>Dung tích</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="carData.hopSo" name="hopSo" required>
-          <label>Transmission</label>
+          <label>Hộp số</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="carData.kieuDang" name="kieuDang" required>
-          <label>Type</label>
+          <label>Kiểu dáng</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="carData.tinhTrang" name="tinhTrang" required>
-          <label>Condition</label>
+          <label>Tình trạng</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="carData.nhienLieu" name="nhienLieu" required>
-          <label>Fuel</label>
+          <label>Nhiên liệu</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="carData.kichThuoc" name="kichThuoc" required>
-          <label>Size</label>
+          <label>Kích thước</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="carData.soGhe" name="soGhe" required>
-          <label>Seats</label>
+          <label>Số ghế</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="carData.gia" name="gia" required>
-          <label>Price</label>
+          <label>Giá</label>
         </div>
         <div class="name">
           <select [(ngModel)]="carData.maHangXe" name="maHangXe" required>
+            <option value="" disabled selected>Chọn hãng xe</option>
             <option *ngFor="let company of carCompanies" [value]="company.id">{{ company.name }}</option>
           </select>
-          <label>Brand</label>
+          <label>Hãng xe</label>
         </div>
-        <div class="input-box">
-          <label for="logoInput" class="file-label">Upload New Logo</label>
-          <input type="file" id="logoInput" accept="image/*" class="file-input" (change)="onFileSelected($event)">
-          <span class="file-custom"></span>
-        </div>
-        <div class="preview-box" *ngIf="carImages.length > 0">
-          <h3>Current Image Previews</h3>
-          <div *ngFor="let image of carImages; let i = index">
-            <img [src]="image" alt="Image Preview">
-            <button type="button" class="btn-delete" (click)="deleteImage(i)">Delete</button>
+        <div class="login-box">
+          <h2>Tải ảnh lên</h2>
+          <div class="input-box">
+            <input type="file" id="file-input" class="file-input" multiple (change)="onFileSelected($event)">
+            <label for="file-input" class="file-label">
+              <i class="fas fa-cloud-upload-alt file-custom"></i>
+              Chọn ảnh
+            </label>
           </div>
-        </div>
-        <div class="button-group">
-          <!-- Style for the Submit button -->
-          <button type="button" class="btn" (click)="updateCar()">Update</button>
-          <!-- Style for the Back button -->
-          <button type="button" class="btn" (click)="back()">Back</button>
+          <div class="preview-box">
+            <h4>Ảnh đã chọn:</h4>
+            <div *ngFor="let imageUrl of previewImageUrls; let i=index">
+              <img [src]="imageUrl" alt="Preview"/>
+              <button class="btn-delete" (click)="deleteImage(i)">Xoá</button>
+            </div>
+          </div>
+          <div class="button-group">
+            <!-- Style for the Submit button -->
+            <button type="button" class="btn" (click)="updateCar()">Cập nhật</button>
+            <!-- Style for the Back button -->
+            <button type="button" class="btn" (click)="back()">Quay lại</button>
+          </div>
         </div>
       </form>
     </div>

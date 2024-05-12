@@ -1,10 +1,9 @@
 <div class="car-list">
-  <h2>List of Cars</h2>
-
+  <h2>DANH SÁCH Ô TÔ</h2>
   <!-- Button for creating a new car -->
   <div class="row mb-3">
     <div class="col text-right">
-      <button class="btn btn-success" type="button" (click)="onCreate()">Create New Car</button>
+      <button class="btn btn-success" type="button" (click)="onCreate()">Tạo Mới Xe</button>
     </div>
   </div>
 
@@ -14,20 +13,20 @@
       <thead class="thead-dark">
         <tr>
           <th>STT</th>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Version</th>
-          <th>Year</th>
-          <th>Engine</th>
-          <th>Transmission</th>
-          <th>Type</th>
-          <th>Condition</th>
-          <th>Fuel</th>
-          <th>Size</th>
-          <th>Seats</th>
-          <th>Price</th>
-          <th>Brand</th>
-          <th>Action</th>
+          <th>Hình ảnh</th>
+          <th>Tên</th>
+          <th>Phiên bản</th>
+          <th>Năm sản xuất</th>
+          <th>Dung tích</th>
+          <th>Hộp số</th>
+          <th>Kiểu dáng</th>
+          <th>Tình trạng</th>
+          <th>Nhiên liệu</th>
+          <th>Kích thước</th>
+          <th>Số ghế</th>
+          <th>Giá tiền</th>
+          <th>Hãng xe</th>
+          <th>Hành động</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +37,7 @@
             <div id="carouselExampleIndicators{{ i }}" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div *ngFor="let image of car.hinh; let j = index" class="carousel-item" [class.active]="j === 0">
-                  <img [src]="image" class="d-block w-100" alt="{{ car.ten }} Image">
+                  <img [src]="'http://192.168.56.1:9000/' + image" class="d-block w-100" alt="{{ car.ten }} Image">
                 </div>
               </div>
               <!-- Kiểm tra số lượng ảnh và hiển thị nút điều hướng chỉ khi có nhiều hơn một ảnh -->
@@ -49,12 +48,12 @@
                 <!-- Nút điều hướng trước -->
                 <a class="carousel-control-prev" [href]="'#carouselExampleIndicators' + i" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="sr-only">Trước</span>
                 </a>
                 <!-- Nút điều hướng sau -->
                 <a class="carousel-control-next" [href]="'#carouselExampleIndicators' + i" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="sr-only">Sau</span>
                 </a>
               </ng-container>
             </div>
@@ -72,8 +71,8 @@
           <td>{{ car.gia }}</td>
           <td>{{ getCarCompanyName(car) }}</td>
           <td>
-            <button class="btn btn-primary mr-2" [routerLink]="['/admin/car/update', car.id]">Update</button>
-            <button class="btn btn-danger" (click)="onDelete(car.id)">Delete</button>
+            <button class="btn btn-primary mr-2" [routerLink]="['/admin/car/update', car.id]">Cập Nhật</button>
+            <button class="btn btn-danger" (click)="onDelete(car.id)">Xoá</button>
           </td>
         </tr>
       </tbody>

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12 text-center p-2">
-    <h4>All Cars</h4>
+    <h4>DANH SÁCH XE</h4>
   </div>
 </div>
 
@@ -15,10 +15,10 @@
     <div class="box-shadow">
       <div class="card mt-2">
         <!-- Display only the first image as a representative image -->
-        <img *ngIf="car.hinh.length > 0" [src]="car.hinh[0]" class="card-img-top" alt="Car Image">
+        <img *ngIf="car.hinh.length > 0" [src]="'http://192.168.56.1:9000/' + car.hinh[0]" class="card-img-top" alt="Car Image">
         <div class="card-body p-1">
-          <h5 class="card-title" title="{{ car.ten }}">{{ car.ten }}</h5>
-          <p class="card-text"><span class="text-danger fw-semibold me-2">$ {{ car.gia }}</span></p>
+          <h5 class="card-title" title="{{ car.ten }}">Tên xe: {{ car.ten }}</h5>
+          <p class="card-text"><span class="text-danger fw-semibold me-2">Giá tiền: {{ car.gia }} VNĐ</span></p>
           <!-- Other car details here -->
           <div class="row">
             <div class="col-6">
@@ -26,7 +26,7 @@
             </div>
             <div class="col-6">
               <!-- Details button -->
-              <button class="btn btn-primary mr-2" [routerLink]="['details', car.id]">Details</button>
+              <button class="btn btn-primary mr-2" [routerLink]="['details', car.id]">Xem chi tiết</button>
             </div>
           </div>
         </div>

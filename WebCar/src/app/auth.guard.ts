@@ -7,7 +7,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   if (typeof window !== 'undefined') {
     // Perform localStorage action
     const localData =  localStorage.getItem('token');
-    debugger
     if (localData == null) {
       const confirmation = window.confirm("Bạn cần đăng nhập trước. Bạn có muốn đăng nhập ngay bây giờ không?");
       if (confirmation) {

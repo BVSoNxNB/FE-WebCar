@@ -122,3 +122,28 @@ h2 {
 .signup-link a:hover {
   text-decoration: underline;
 }
+.links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.link {
+  font-size: 1em;
+  color: #fff; /* Màu trắng */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.link:hover {
+  background-color: #0ef;
+  color: #1f293a; /* Màu chữ khi hover */
+}
+
+
+.divider {
+  margin: 0 10px;
+  color: #fff;
+}

@@ -1,72 +1,72 @@
 <div class="parent">
   <div class="container">
     <div class="login-box">
-      <h2>Create New Car</h2>
+      <h2>Tạo mới xe</h2>
       <form>
         <div class="name">
           <input type="text" [(ngModel)]="createObj.ten" name="ten" required>
-          <label>Name</label>
+          <label>Tên xe</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="createObj.phienBan" name="phienBan" required>
-          <label>Version</label>
+          <label>Phiên bản</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="createObj.namSanXuat" name="namSanXuat" required>
-          <label>Year</label>
+          <label>Năm sản xuất</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="createObj.dungTich" name="dungTich" required>
-          <label>Engine</label>
+          <label>Dung tích</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="createObj.hopSo" name="hopSo" required>
-          <label>Transmission</label>
+          <label>Hộp số</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="createObj.kieuDang" name="kieuDang" required>
-          <label>Type</label>
+          <label>Kiểu dáng</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="createObj.tinhTrang" name="tinhTrang" required>
-          <label>Condition</label>
+          <label>Tình trạng</label>
         </div>
         <div class="name">
           <input type="text" [(ngModel)]="createObj.nhienLieu" name="nhienLieu" required>
-          <label>Fuel</label>
+          <label>Nhiên liệu</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="createObj.kichThuoc" name="kichThuoc" required>
-          <label>Size</label>
+          <label>Kích thước</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="createObj.soGhe" name="soGhe" required>
-          <label>Seats</label>
+          <label>Số ghế</label>
         </div>
         <div class="name">
           <input type="number" [(ngModel)]="createObj.gia" name="gia" required>
-          <label>Price</label>
+          <label>Giá</label>
         </div>
         <div class="name">
           <select [(ngModel)]="createObj.maHangXe" name="maHangXe" required>
             <option *ngFor="let company of carCompanies" [value]="company.id">{{ company.name }}</option>
           </select>
-          <label>Brand</label>
+          <label>Hãng xe</label>
         </div>
         <div class="input-box">
-          <label for="imageInput" class="file-label">Upload Images</label>
+          <label for="imageInput" class="file-label">Tải ảnh</label>
           <input type="file" id="imageInput" accept="image/*" class="file-input" (change)="onFileSelected($event)" multiple required>
           <span class="file-custom"></span>
         </div>
         <div class="preview-box">
-          <div *ngFor="let image of createObj.hinh; let i = index">
+          <div *ngFor="let image of imagePreviews; let i = index">
             <img [src]="image" alt="Car Image Preview">
-            <button type="button" class="btn-delete" (click)="deleteImage(i)">Delete</button>
+            <button type="button" class="btn-delete" (click)="deleteImage(i)">Xoá</button>
           </div>
         </div>
         <div class="button-group">
-          <button type="button" class="btn" (click)="onCreate()">Submit</button>
-          <button type="button" class="btn" (click)="back()">Back</button>
+          <button type="button" class="btn" (click)="onCreate()">Tạo mới</button>
+          <button type="button" class="btn" (click)="back()">Quay lại</button>
         </div>
       </form>
     </div>

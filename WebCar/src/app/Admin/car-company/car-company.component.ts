@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UpdateCarCompanyComponent } from '../update-car-company/update-car-company.component';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
+import { UpdateCarCompanyComponent } from '../update-car-company/update-car-company.component';
 
 @Component({
   selector: 'app-car-company',
@@ -15,7 +15,7 @@ import { finalize } from 'rxjs';
 export class CarCompanyComponent implements OnInit {
   carCompanies: any[] = [];
   companyId: number = 0;
-
+  companyData: any = {};
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -34,30 +34,35 @@ export class CarCompanyComponent implements OnInit {
       .get('http://localhost:5119/api/CarCompany/getAllCarCompany')
       .subscribe((res: any) => {
         this.carCompanies = res;
+        this.companyData = res;
       });
   }
   onCreate(){
     this.router.navigateByUrl('/admin/car-company/create');
   }
   onDelete(companyId: Number) {
-    this.http
-      .delete(
-        `http://localhost:5119/api/CarCompany/deleteCarCompany/${companyId}`
-      ).pipe(
-        finalize(() => {
-          // Chuyển hướng đến trang danh sách công ty xe hơi hoặc bất kỳ trang nào khác cần thiết sau khi cập nhật thành công
-          this.fetchCarCompanies();
-        })
-      )
-      .subscribe(
-        (res: any) => {
-        },
-        (error) => {
-          // Handle error if deletion fails
-          console.error('Failed to delete:', error);
-        }
-      );
+      const confirmation = window.confirm("Bạn chắc chắn muốn xoá khỏi hãng xe?");
+      if (confirmation) {
+        this.http
+        .delete(
+          `http://localhost:5119/api/CarCompany/deleteCarCompany/${companyId}`
+        ).pipe(
+          finalize(() => {
+            // Chuyển hướng đến trang danh sách công ty xe hơi hoặc bất kỳ trang nào khác cần thiết sau khi cập nhật thành công
+            this.fetchCarCompanies();
+          })
+        )
+        .subscribe(
+          (res: any) => {
+          },
+          (error) => {
+            // Handle error if deletion fails
+            console.error('Failed to delete:', error);
+          }
+        );
+      }
   }
+
 }
 export class CarCompany {
   id: string;

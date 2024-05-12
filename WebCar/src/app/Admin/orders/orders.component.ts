@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
+import { Car } from '../car/car.component';
 
 @Component({
   selector: 'app-orders',
@@ -14,10 +15,9 @@ import { finalize } from 'rxjs';
   styleUrl: './orders.component.css'
 })
 export class OrdersComponent implements OnInit {
-
+  cars: Car[] = [];
   orders: Order[] = [];
   selectedStatus: number = 0;
-
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -31,10 +31,17 @@ export class OrdersComponent implements OnInit {
   }
 
   allOrder() {
-    this.http.get<any[]>('http://localhost:5119/api/Order/getAllOrder')
+    this.http.get<Order[]>('http://localhost:5119/api/Order/getAllOrder')
       .subscribe(
-        (res: any[]) => {
+        (res: Order[]) => {
           this.orders = res;
+          this.orders.forEach(order => {
+            this.getCarById(order.carId).subscribe(
+              (carInfo: Car) => {
+                  order.carInfo = carInfo;
+              }
+            );
+          });
         },
         error => {
           console.error('Error fetching orders:', error);
@@ -72,12 +79,24 @@ export class OrdersComponent implements OnInit {
       .subscribe(
         (res: any[]) => {
           this.orders = res;
+          this.orders.forEach(order => {
+            this.getCarById(order.carId).subscribe(
+              (carInfo: Car) => {
+                  order.carInfo = carInfo;
+              }
+            );
+          });
         },
         error => {
           console.error('Error fetching orders by status:', error);
         }
       );
   }
+
+
+  getCarById(carId: number) {
+    return this.http.get<Car>('http://localhost:5119/api/Car/getCarById/' + carId);
+}
 }
 export class Order {
   id: number = 0;
@@ -88,4 +107,5 @@ export class Order {
   text: string = '';
   status: number = 0;
   carId: number = 0;
+  carInfo?: Car;
 }

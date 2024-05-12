@@ -53,8 +53,7 @@ export class OrderComponent {
             this.router.navigateByUrl('');
           },
           (error) => {
-            alert('Đã xảy ra lỗi khi đặt hàng. Vui lòng nhập đầy đủ thông tin.');
-            console.error('Error submitting order:', error);
+            alert('Đã xảy ra lỗi khi đặt hàng. Vui lòng nhập đầy đủ thông tin.(Lưu ý: Tài khoản ADMIN không được đặt hàng)');
           }
         );
     };

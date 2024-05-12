@@ -5,7 +5,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AdminLayoutComponent } from './Admin/admin-layout/admin-layout.component';
 import { CarCompanyComponent } from './Admin/car-company/car-company.component';
 import { CreateCarCompanyComponent } from './Admin/create-car-company/create-car-company.component';
-import { UpdateCarCompanyComponent } from './Admin/update-car-company/update-car-company.component';
 import { CarComponent } from './Admin/car/car.component';
 import { CreateCarComponent } from './Admin/create-car/create-car.component';
 import { UpdateCarComponent } from './Admin/update-car/update-car.component';
@@ -16,6 +15,7 @@ import { OrdersComponent } from './Admin/orders/orders.component';
 import { UsersComponent } from './Admin/users/users.component';
 import { authGuard } from './auth.guard';
 import { CarByIdCompanyComponent } from './pages/car-by-id-company/car-by-id-company.component';
+import { UpdateCarCompanyComponent } from './Admin/update-car-company/update-car-company.component';
 export const routes: Routes = [
   {
     path: '',

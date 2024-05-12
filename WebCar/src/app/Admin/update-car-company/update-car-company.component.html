@@ -1,26 +1,27 @@
+<p>update-car-company works!</p>
 <div class="parent">
   <div class="container">
     <div class="update-company-box">
-      <h2>Update Car Company</h2>
+      <h2>Cập Nhật Hãng Xe</h2>
       <form>
         <div class="name">
           <input type="text" [(ngModel)]="companyData.name" name="name" required>
-          <label>Name</label>
+          <label>Tên</label>
         </div>
         <div class="input-box">
-          <label for="logoInput" class="file-label">Upload New Logo</label>
-          <input type="file" id="logoInput" accept="image/*" class="file-input" (change)="onFileSelected($event)">
+          <label for="logoInput" class="file-label">Tải ảnh mới</label>
+          <input type="file" id="logoInput" accept="image/*" class="file-input" (change)="onFileSelected($event)" required>
           <span class="file-custom"></span>
         </div>
         <div class="preview-box" *ngIf="companyData.logo">
-          <h3>Current Logo Preview</h3>
-          <img [src]="companyData.logo" alt="Current Logo Preview">
+          <h3>Ảnh tải lên</h3>
+          <img [src]="getLogoURL()" alt="Current Logo Preview">
         </div>
         <div class="button-group">
           <!-- Style for the Submit button -->
-          <button type="button" class="btn" (click)="updateCompany()">Update</button>
+          <button type="button" class="btn" (click)="updateCompany()">Cập Nhật</button>
           <!-- Style for the Back button -->
-          <button type="button" class="btn" (click)="back()">Back</button>
+          <button type="button" class="btn" (click)="back()">Quay Lại</button>
         </div>
       </form>
     </div>

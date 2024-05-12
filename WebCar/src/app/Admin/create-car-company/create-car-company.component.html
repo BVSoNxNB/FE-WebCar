@@ -1,14 +1,14 @@
 <div class="parent">
   <div class="container">
     <div class="login-box">
-      <h2>Create Car Company</h2>
+      <h2>Tạo Hãng Xe</h2>
       <form>
         <div class="name">
           <input type="text" [(ngModel)]="createObj.name" name="name" required>
-          <label>Name</label>
+          <label>Tên hãng xe</label>
         </div>
         <div class="input-box">
-          <label for="logoInput" class="file-label">Upload Logo</label>
+          <label for="logoInput" class="file-label">Tải ảnh đại diện</label>
           <input type="file" id="logoInput" accept="image/*" class="file-input" (change)="onFileSelected($event)" required>
           <span class="file-custom"></span>
         </div>
@@ -17,9 +17,9 @@
         </div>
         <div class="button-group">
           <!-- Style for the Submit button -->
-          <button type="button" class="btn" (click)="onCreate()">Submit</button>
+          <button type="button" class="btn" (click)="onCreate()">Tạo mới</button>
           <!-- Style for the Back button -->
-          <button type="button" class="btn" (click)="back()">Back</button>
+          <button type="button" class="btn" (click)="back()">Quay lại</button>
         </div>
       </form>
     </div>

@@ -1,5 +1,5 @@
 <div class="user-list">
-  <h2>List of Users</h2>
+  <h2>DANH SÁCH TÀI KHOẢN</h2>
   <!-- <div class="row justify-content-end">
     <div class="col-6 text-right">
       <div class="dropdown">
@@ -18,12 +18,12 @@
       <thead>
         <tr>
           <th>STT</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Họ</th>
+          <th>Tên</th>
+          <th>Tài khoản</th>
           <th>Email</th>
-          <th>Role</th>
-          <th>Action</th>
+          <th>Quyền</th>
+          <th>Hành động</th>
         </tr>
       </thead>
       <tbody>
@@ -36,10 +36,10 @@
           <td>{{ user.role }}</td>
           <td>
             <ng-container *ngIf="user.role =='USER'">
-              <button (click)="makeAdmin(user.userName)" class="btn btn-primary">Make Admin</button>
+              <button (click)="makeAdmin(user.userName)" class="btn btn-primary">MAKE ADMIN</button>
             </ng-container>
             <ng-container *ngIf="user.role =='ADMIN'">
-              <button (click)="makeUser(user.userName)" class="btn btn-primary">Make User</button>
+              <button (click)="makeUser(user.userName)" class="btn btn-primary">MAKE USER</button>
             </ng-container>
           </td>
         </tr>
@@ -48,6 +48,6 @@
   </div>
 
   <div *ngIf="Users.length === 0">
-    <p class="no-users">No users available.</p>
+    <p class="no-users">Không có tài khoản nào</p>
   </div>
 </div>
