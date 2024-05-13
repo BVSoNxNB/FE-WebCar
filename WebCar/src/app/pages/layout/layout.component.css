@@ -1,6 +1,13 @@
+
 /* CSS cho navbar */
 .navbar {
   background-color: #343a40; /* Màu nền của navbar */
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Đảm bảo navbar luôn ở trên cùng */
+
 }
 
 .navbar-brand {

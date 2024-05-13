@@ -1,32 +1,25 @@
-<div class="row">
-  <div class="col-12 text-center p-2">
-    <h4>DANH SÁCH XE</h4>
+<div class="container-lg">
+  <div class="row">
+    <div class="col-12 text-center p-2">
+      <h4>DANH SÁCH XE</h4>
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <!-- You can add filters or search here if needed -->
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-3" *ngFor="let car of Cars">
-    <div class="box-shadow">
-      <div class="card mt-2">
-        <!-- Display only the first image as a representative image -->
-        <img *ngIf="car.hinh.length > 0" [src]="'http://192.168.56.1:9000/' + car.hinh[0]" class="card-img-top" alt="Car Image">
-        <div class="card-body p-1">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col-lg-3" *ngFor="let car of Cars">
+      <div class="card h-100">
+        <div class="card-img-wrapper mx-auto">
+          <!-- Display only the first image as a representative image -->
+          <img *ngIf="car.hinh.length > 0" [src]="'http://192.168.56.1:9000/' + car.hinh[0]" class="card-img-top" alt="Car Image">
+        </div>
+        <div class="card-body d-flex flex-column">
           <h5 class="card-title" title="{{ car.ten }}">Tên xe: {{ car.ten }}</h5>
           <p class="card-text"><span class="text-danger fw-semibold me-2">Giá tiền: {{ car.gia }} VNĐ</span></p>
           <!-- Other car details here -->
-          <div class="row">
-            <div class="col-6">
-              <!-- Car rating stars, number of reviews, etc. -->
-            </div>
-            <div class="col-6">
-              <!-- Details button -->
-              <button class="btn btn-primary mr-2" [routerLink]="['details', car.id]">Xem chi tiết</button>
+          <div class="mt-auto d-flex flex-column">
+            <div class="row">
+              <div class="col-12">
+                <button class="btn btn-primary" [routerLink]="['details', car.id]">Xem chi tiết</button>
+              </div>
             </div>
           </div>
         </div>
